@@ -73,6 +73,6 @@ DB_PASSWORD=
 
 6️⃣ Inicie o Servidor
 
-  php artisan serve
+ `` php artisan serve``
 
 Agora, acesse http://127.0.0.1:8000 no seu navegador! 🚀
