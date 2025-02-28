@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GeneroLivro;
 use App\Models\Livro;
+use App\Models\SituacaoEmprestimo;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -127,7 +128,8 @@ class LivroController extends Controller
         try {
             $parametros = [
                 "livros" => Livro::all(),
-                "usuarios" =>  User::all()
+                "usuarios" =>  User::all(),
+                "situacoes_emprestimo" => SituacaoEmprestimo::all()
             ];
             return view('emprestimos', $parametros);
             return redirect()->route('livros.index')->with('success', 'Livro ativado com sucesso!');

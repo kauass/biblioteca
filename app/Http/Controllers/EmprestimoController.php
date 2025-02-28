@@ -44,36 +44,30 @@ class EmprestimoController extends Controller
     public function store(Request $request)
     {
         try {
-            $emprestimoExistente = Emprestimo::where('usuario_id', $request->usuario_id)
-            ->where('livro_id', $request->livro_id)
-            ->where('data_devolucao','>=', Carbon::now())
-            ->first();
-
-            if(!$emprestimoExistente){
-
+            $livro = Livro::find($request->livro_id);
+            if($livro->situacao != 2){
                 Emprestimo::create([
                     'usuario_id' => $request->usuario_id,
                     'livro_id' => $request->livro_id,
                     'situacao_id' => $request->situacao,
                     'data_devolucao' => $request->data_devolucao
                 ]);
-                 
+                    
                 $livro = Livro::find($request->livro_id);
-
+    
                 $livro->update([
                     'situacao' => SituacaoLivro::EMPRESTADO
                 ]);
-
+    
                 return response()->json([
                     'message' => 'Emprestimo cadastrado com sucesso!',
                 ]);
-                 
-            } else {
+            } else{
                 return response()->json([
-                    'message' => 'Este livro já está emprestado!', 'error' => true
+                    'message' => 'Este livro já esta emprestado!',
                 ]);
             }
-    
+         
             return view('emprestimos');
         } catch (\Exception $e) {
      
