@@ -64,6 +64,7 @@ class UserController extends Controller
     public function show(Request $request, $id)
     {
         try {
+      
             $user = User::find($id);
 
             $parametros = [
@@ -80,13 +81,6 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $user = User::findOrFail($id); 
-
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email'
-        ], [
-            'email.unique' => 'Este e-mail já está cadastrado.'
-        ]);
 
         $user->name = $request->name;
         $user->email = $request->email;
