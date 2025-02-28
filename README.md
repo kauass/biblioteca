@@ -1,4 +1,4 @@
-📚 Sistema de Gerenciamento de Biblioteca
+# 📚 Sistema de Gerenciamento de Biblioteca
 
 Bem-vindo ao sistema simples de gerenciamento de biblioteca! Este projeto permite cadastrar usuários, livros e gerenciar empréstimos de forma prática e eficiente.
 
@@ -42,13 +42,14 @@ Bootstrap - Para estilização básica (opcional)
 
 1️⃣ Clone o Repositório
 
-  git clone https://github.com/seuusuario/sistema-biblioteca.git
-  cd sistema-biblioteca
+  ``git clone https://github.com/seuusuario/sistema-biblioteca.git ``
+  ``cd sistema-biblioteca``
 
 2️⃣ Instale as Dependências
 
-  composer install
-  npm install  # (Opcional, se houver assets front-end)
+`` composer install``
+ `` npm install``  # (Opcional, se houver assets front-end)
+
 
 3️⃣ Configure o Banco de Dados
 
@@ -56,20 +57,22 @@ Duplique o arquivo .env.example e renomeie para .env
 
 Edite as credenciais do banco de dados no .env:
 
+```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=biblioteca_db
 DB_USERNAME=root
 DB_PASSWORD=
+```
 
 4️⃣ Gere a Chave da Aplicação
 
-  php artisan key:generate
+ `` php artisan key:generate``
 
 5️⃣ Execute as Migrações e Seeds
 
-  php artisan migrate --seed
+ `` php artisan migrate --seed``
 
 6️⃣ Inicie o Servidor
 
