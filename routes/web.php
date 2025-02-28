@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmprestimoController;
 use App\Http\Controllers\LivroController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -40,6 +41,16 @@ Route::patch('/user/restore/{id}', [UserController::class, 'restore'])->name('us
 |--------------------------------------------------------------------------
 */
 
-
+Route::get('/livros', [LivroController::class, 'index'])->name('livros.index');
 Route::get('/livros/create', [LivroController::class, 'create'])->name('livros.create');
-Route::post('livros', [LivroController::class, 'store'])->name('livros.store');
+Route::get('/livros/emprestar', [LivroController::class, 'emprestar'])->name('livros.emprestar');
+Route::get('/livros/{id}', [LivroController::class, 'show'])->name('livros.show');
+Route::post('/livros', [LivroController::class, 'store'])->name('livros.store');
+Route::put('/livro/{id}', [LivroController::class, 'update'])->name('livros.update');
+Route::delete('/livros/destroy/{id}', [LivroController::class, 'destroy'])->name('livro.destroy');
+Route::patch('/livros/restore/{id}', [LivroController::class, 'restore'])->name('livro.restore');
+
+
+
+Route::get('/emprestimos/create', [EmprestimoController::class, 'create'])->name('emprestimos.create');
+Route::get('/emprestimos/index', [EmprestimoController::class, 'index'])->name('emprestimos.index');

@@ -29,28 +29,30 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   
   <script>
-  $(document).ready(function() {
-      $('#createUserForm').on('submit', function(e) {
-          e.preventDefault();
+    $(document).ready(function() {
+        $('#createUserForm').on('submit', function(e) {
+            e.preventDefault();
 
-          $.ajax({
-              url: $(this).attr('action'),
-              method: 'POST',
-              data: $(this).serialize(),
-              success: function(response) {
-                  alert(response.message); 
-              },
-              error: function(xhr, status, error) {
-                  if (xhr.status === 422) {  
-                      let errors = xhr.responseJSON.errors;
-                      alert(errors.email ? errors.email : (errors.numero_cadastro ? errors.numero_cadastro : 'Ocorreu um erro inesperado.'));
-                  } else {
-                      alert('Ocorreu um erro ao tentar cadastrar o usuário.');
-                  }
-              }
-          });
-      });
-  });
+            $.ajax({
+                url: $(this).attr('action'),
+                method: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    $('#createUserForm')[0].reset(); 
+                    alert(response.message); 
+                    window.location.href = '{{ route('users.index') }}'; 
+                },
+                error: function(xhr, status, error) {
+                    if (xhr.status === 422) {  
+                        let errors = xhr.responseJSON.errors;
+                        alert(errors.email ? errors.email : (errors.numero_cadastro ? errors.numero_cadastro : 'Ocorreu um erro inesperado.'));
+                    } else {
+                        alert('Ocorreu um erro ao tentar cadastrar o usuário.');
+                    }
+                }
+            });
+        });
+    });
   </script>
 
 @endsection

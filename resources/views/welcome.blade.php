@@ -32,7 +32,17 @@
             </a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="{{ route('livros.create') }}">Incluir Livros</a></li>
-              <li><a href="#">Ver Livros</a></li>
+              <li><a href="{{ route('livros.index') }}">Ver Livros</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              Empréstimo <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{{ route('emprestimos.create') }}">Incluir empréstimo</a></li>
+              <li><a href="{{ route('emprestimos.index') }}">Ver empréstimos</a></li>
             </ul>
           </li>
         </ul>

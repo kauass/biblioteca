@@ -9,6 +9,11 @@
   <form id="createLivroForm" method="POST" action="{{ route('livros.store') }}">
     @csrf
     <div class="form-group">
+      <label for="numero_cadastro">Número de Cadastro:</label>
+      <input type="text" class="form-control input-sm" id="numero_cadastro" name="numero_cadastro" value="{{ $proximo_id }}" required readonly style="width: 100px;">
+    </div>
+    
+    <div class="form-group">
       <label for="nome">Nome do Livro:</label>
       <input type="text" class="form-control" id="nome" name="nome" required>
     </div>
@@ -19,10 +24,12 @@
     </div>
 
     <div class="form-group">
-      <label for="situacao">Situação:</label>
-      <select class="form-control" id="situacao" name="situacao" required>
-        <option value="Disponível">Disponível</option>
-        <option value="Emprestado">Emprestado</option>
+      <label for="genero">Gênero:</label>
+      <select class="form-control" id="genero" name="genero" required>
+        <option value="" disabled selected>Selecione o Gênero</option>
+        @foreach ($generos as $genero)
+          <option value="{{ $genero->id }}">{{ $genero->nome }}</option>
+        @endforeach
       </select>
     </div>
 
@@ -42,12 +49,12 @@
               data: $(this).serialize(),
               success: function(response) {
                   alert(response.message); 
-                  $('#createLivroForm')[0].reset(); // Limpa o formulário
+                  window.location.href = '{{ route('livros.index') }}'; 
               },
               error: function(xhr, status, error) {
                   if (xhr.status === 422) {  
                       let errors = xhr.responseJSON.errors;
-                      alert(errors.numero_registro ? errors.numero_registro[0] : 'Ocorreu um erro inesperado.');
+                      alert(errors.nome ? errors.nome[0] : 'Ocorreu um erro inesperado.');
                   } else {
                       alert('Ocorreu um erro ao tentar cadastrar o livro.');
                   }

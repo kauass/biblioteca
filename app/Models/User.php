@@ -23,5 +23,13 @@ class User extends Authenticatable
         'email'
     ];
     
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtoupper($value);
+    }
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtoupper($value);
+    }
 
 }

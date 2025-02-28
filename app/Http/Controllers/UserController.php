@@ -23,7 +23,6 @@ class UserController extends Controller
         }
     }    
 
-
     public function create()
     {
         try {
@@ -65,7 +64,7 @@ class UserController extends Controller
     {
         try {
       
-            $user = User::find($id);
+            $user = User::withTrashed()->find($id);
 
             $parametros = [
                 "user" => $user
@@ -77,7 +76,6 @@ class UserController extends Controller
         }
     }
 
-    
     public function update(Request $request, string $id)
     {
         $user = User::findOrFail($id); 
@@ -91,7 +89,6 @@ class UserController extends Controller
         ]);
     }
 
-
     public function destroy($id)
     {
         try {
@@ -104,7 +101,6 @@ class UserController extends Controller
             return redirect()->route('users.index')->with('error', 'Erro ao tentar inativar o usuário.');
         }
     }
-
 
     public function restore($id)
     {
