@@ -18,7 +18,6 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
-    
 });
 
 /*
@@ -50,7 +49,14 @@ Route::put('/livro/{id}', [LivroController::class, 'update'])->name('livros.upda
 Route::delete('/livros/destroy/{id}', [LivroController::class, 'destroy'])->name('livro.destroy');
 Route::patch('/livros/restore/{id}', [LivroController::class, 'restore'])->name('livro.restore');
 
-
+/*
+|--------------------------------------------------------------------------
+| Rotas Empréstimo
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/emprestimos/create', [EmprestimoController::class, 'create'])->name('emprestimos.create');
 Route::get('/emprestimos/index', [EmprestimoController::class, 'index'])->name('emprestimos.index');
+Route::post('/emprestimos', [EmprestimoController::class, 'store'])->name('emprestimos.store');
+Route::put('/emprestimos/marcarDevolvido/{id}', [EmprestimoController::class, 'marcarDevolvido'])->name('emprestimos.marcarDevolvido');
+Route::put('/emprestimos/marcarAtrasado/{id}', [EmprestimoController::class, 'marcarAtrasado'])->name('emprestimos.marcarAtrasado');

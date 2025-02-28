@@ -19,8 +19,10 @@ return new class extends Migration
             $table->foreignId('livro_id')
             ->constrained('livros')
             ->onDelete('NO ACTION');
-            $table->integer('situacao');
-            $table->timestamp('data_devolucao');
+            $table->foreignId('situacao_id')
+            ->constrained('situacao_emprestimos')
+            ->onDelete('NO ACTION');
+            $table->timestamp('data_devolucao')->nullable();
             $table->timestamps();
 
         });
