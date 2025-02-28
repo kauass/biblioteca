@@ -1,0 +1,10 @@
+.navbar-default .navbar-collapse {
+    display: flex;  /* Aplica o layout flexbox */
+    justify-content: center;  /* Centraliza os itens */
+    align-items: center;  /* Alinha os itens verticalmente no centro */
+  }
+  
+  .navbar-default .navbar-collapse .dropdown {
+    margin: 0 10px;  /* Dá um espaço entre os itens do menu */
+  }
+  
