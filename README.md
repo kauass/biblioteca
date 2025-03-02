@@ -48,7 +48,7 @@ Bootstrap - Para estilização básica (opcional)
 2️⃣ Instale as Dependências
 
 `` composer install``
- `` npm install``  # (Opcional, se houver assets front-end)
+ `` npm install`` 
 
 
 3️⃣ Configure o Banco de Dados
