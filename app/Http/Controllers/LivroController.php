@@ -16,15 +16,12 @@ class LivroController extends Controller
     public function index()
     {
         $parametros = [
-            "livros" => Livro::all()
+            "livros" => Livro::withTrashed()->paginate(50)
         ];
 
         return view('ver_livros', $parametros);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {  
         $ultimoLivro = Livro::max('id');
@@ -42,9 +39,6 @@ class LivroController extends Controller
         return view('livros', $parametros);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -122,7 +116,6 @@ class LivroController extends Controller
         }
     }
 
-    
     public function emprestar()
     {
         try {
