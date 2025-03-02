@@ -2,6 +2,10 @@
 
 Bem-vindo ao sistema simples de gerenciamento de biblioteca! Este projeto permite cadastrar usuários, livros e gerenciar empréstimos de forma prática e eficiente.
 
+📌 Versões
+Laravel: 8.x (ou versão correspondente)
+PHP: 8.1.10
+
 🚀 Funcionalidades
 
 1️⃣ Gerenciamento de Usuários
@@ -79,7 +83,3 @@ DB_PASSWORD=
  `` php artisan serve``
 
 Agora, acesse http://127.0.0.1:8000 no seu navegador! 🚀
-
-📌 Versões
-Laravel: 8.x (ou versão correspondente)
-PHP: 8.1.10
